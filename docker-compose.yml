@@ -1,0 +1,25 @@
+#docker-compose file
+version: '3'
+
+services:
+  
+  web:
+    container_name: 'api'
+    restart: always
+    build: .
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: 'db'
+    restart: always
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - /data/db

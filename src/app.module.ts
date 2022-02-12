@@ -9,7 +9,8 @@ import { AuthModule } from './auth/auth.module';
   imports: 
   [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(`${process.env.MONGO_ATLAS_URL}@cluster0.ngspb.mongodb.net/${process.env.MONGO_ATLAS_DB}?retryWrites=true&w=majority`),
+    //MongooseModule.forRoot(`${process.env.MONGO_ATLAS_URL}@cluster0.ngspb.mongodb.net/${process.env.MONGO_ATLAS_DB}?retryWrites=true&w=majority`),
+    MongooseModule.forRoot(`mongodb://${process.env.DB_HOSTNAME}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`),
     UsersModule,
     AuthModule
   ],
